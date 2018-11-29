@@ -1,0 +1,11 @@
+version: '2'
+services:
+	rest-web:
+		image: tomcat:9.0-jre10		
+		ports:
+		 - "8888:8080"
+		volumes:
+		- ./target/restfulmavenapp.war:/usr/local/tomcat/restfulmavenapp.war
+		
+		
+		 
