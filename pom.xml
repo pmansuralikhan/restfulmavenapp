@@ -48,18 +48,34 @@
 			<artifactId>jersey-media-json-jackson</artifactId>
 			<version>2.26</version>
 		</dependency>
+		<!--  New dependencies to make work on docker instance -->
 		<dependency>
-                        <groupId>javax.xml.bind</groupId>
-                        <artifactId>jaxb-api</artifactId>
-                        <version>2.3.0</version>
-                 </dependency>
+			<groupId>javax.xml.bind</groupId>
+			<artifactId>jaxb-api</artifactId>
+			<version>2.2.11</version>
+		</dependency>
+		<dependency>
+			<groupId>com.sun.xml.bind</groupId>
+			<artifactId>jaxb-core</artifactId>
+			<version>2.2.11</version>
+		</dependency>
+		<dependency>
+			<groupId>com.sun.xml.bind</groupId>
+			<artifactId>jaxb-impl</artifactId>
+			<version>2.2.11</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.activation</groupId>
+			<artifactId>activation</artifactId>
+			<version>1.1.1</version>
+		</dependency>
 
-<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.jaxrs/jackson-jaxrs-xml-provider -->
-<!-- <dependency> -->
-<!--     <groupId>com.fasterxml.jackson.jaxrs</groupId> -->
-<!--     <artifactId>jackson-jaxrs-xml-provider</artifactId> -->
-<!--     <version>2.1.5</version> -->
-<!-- </dependency> -->
+		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.jaxrs/jackson-jaxrs-xml-provider -->
+		<!-- <dependency> -->
+		<!-- <groupId>com.fasterxml.jackson.jaxrs</groupId> -->
+		<!-- <artifactId>jackson-jaxrs-xml-provider</artifactId> -->
+		<!-- <version>2.1.5</version> -->
+		<!-- </dependency> -->
 
 
 
