@@ -42,5 +42,17 @@ public class MessageService {
 		MESSAGES.add(message);
 		return message;
 	}
+	
+	@GET
+	@Path("/message")
+	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
+	public Message getMessage(@PathParam("messageId") int messageId) {
+		return MESSAGES.get(messageId);
+	}
+	
+	protected static Message getUserMessage() {
+		int index = (int) (Math.random() * 10) %  MESSAGES.size() + 1;
+		return MESSAGES.get(index);		
+	}
 
 }
