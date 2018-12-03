@@ -44,24 +44,24 @@ public class MessageService {
 		MESSAGES.add(message);
 		return message;
 	}
-	
+
 	@GET
 	@Path("/message")
 	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
 	public Message getMessage(@PathParam("messageId") int messageId) {
 		return MESSAGES.get(messageId);
 	}
-	
+
 	@GET
 	@Path("/{messageIndex}")
 	@Produces({ MediaType.APPLICATION_JSON })
 	public Message getMessage(@PathParam(value = "messageIndex") int idx, @Context UriInfo uriInfo) {
-		return MESSAGES.get(idx);
+		return MESSAGES.get(idx + 1);
 	}
-	
+
 	protected static Message getUserMessage() {
-		int index = (int) (Math.random() * 10) %  MESSAGES.size() + 1;
-		return MESSAGES.get(index);		
+		int index = (int) (Math.random() * 10) % MESSAGES.size(); // generate 0 to size-1 
+		return MESSAGES.get(index);
 	}
 
 }
