@@ -5,6 +5,6 @@ services:
     ports:
       - "8888:8080"
     volumes:
-      - ./target/restfulmavenapp.war:/usr/local/tomcat/ROOT.war
+      - ./target/restfulmavenapp.war:/usr/local/tomcat/webapps/ROOT.war
       - ./target/restfulmavenapp:/usr/local/tomcat/webapps/ROOT
 
