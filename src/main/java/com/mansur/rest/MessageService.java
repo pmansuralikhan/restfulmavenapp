@@ -56,7 +56,7 @@ public class MessageService {
 	@Path("/{messageIndex}")
 	@Produces({ MediaType.APPLICATION_JSON })
 	public Message getMessage(@PathParam(value = "messageIndex") int idx, @Context UriInfo uriInfo) {
-		return MESSAGES.get(idx + 1);
+		return MESSAGES.get(idx - 1);
 	}
 
 	protected static Message getUserMessage() {
