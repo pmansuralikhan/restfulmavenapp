@@ -42,6 +42,7 @@ public class UserService {
 
 	@GET
 	@Path("/{userIndex}")
+	//@Produces({ MediaType.APPLICATION_JSON })
 	public User getUser(@PathParam(value = "userIndex") int idx, @Context UriInfo uriInfo) {
 		return USERS.get(idx);
 	}

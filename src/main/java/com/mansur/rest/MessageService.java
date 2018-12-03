@@ -10,8 +10,10 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 //import javax.ws.rs.core.Response;
+import javax.ws.rs.core.UriInfo;
 
 import com.mansur.rest.model.Message;
 
@@ -48,6 +50,13 @@ public class MessageService {
 	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
 	public Message getMessage(@PathParam("messageId") int messageId) {
 		return MESSAGES.get(messageId);
+	}
+	
+	@GET
+	@Path("/{messageIndex}")
+	@Produces({ MediaType.APPLICATION_JSON })
+	public Message getMessage(@PathParam(value = "messageIndex") int idx, @Context UriInfo uriInfo) {
+		return MESSAGES.get(idx);
 	}
 	
 	protected static Message getUserMessage() {
