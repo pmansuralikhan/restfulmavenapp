@@ -1,3 +1,4 @@
+# Payara support. Run docker run --rm -it -v $(pwd):/project -w /project maven mvn package && docker-compose -f payara-docker-compose.yml up
 version: '3'
 services:
   message-service:
