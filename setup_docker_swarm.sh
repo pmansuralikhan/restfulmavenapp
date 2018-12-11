@@ -3,7 +3,7 @@
 # https://docs.docker.com/swarm/provision-with-machine/
 
 set -e
-COMMON_OPTS=" --amazonec2-region "us-east-2" --amazonec2-zone "a" --amazonec2-vpc-id vpc-fa757492 --amazonec2-security-group ubuntu --amazonec2-access-key AKIAIBUZIECKC3YPO4IQ --amazonec2-secret-key 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"
+COMMON_OPTS=" --amazonec2-region "us-east-2" --amazonec2-zone "a" --amazonec2-vpc-id vpc-fa757492 --amazonec2-security-group ubuntu --amazonec2-access-key XXXXXXXXXXXXXXXXXXXXXXXXX --amazonec2-secret-key XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
 
 docker-machine rm -f tokenserver
 docker-machine rm -f manager0
@@ -11,7 +11,7 @@ docker-machine rm -f worker0
 docker-machine rm -f worker1
 
 echo "---- creating swarm token server"
-docker-machine create -d amazonec2 --amazonec2-region us-east-2 --amazonec2-zone a --amazonec2-vpc-id vpc-fa757492 --amazonec2-security-group ubuntu --amazonec2-access-key AKIAIBUZIECKC3YPO4IQ --amazonec2-secret-key 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 tokenserver
+docker-machine create -d amazonec2 --amazonec2-region us-east-2 --amazonec2-zone a --amazonec2-vpc-id vpc-fa757492 --amazonec2-security-group ubuntu --amazonec2-access-key XXXXXXXXXXXXXXXXXXXXXXXXX --amazonec2-secret-key XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX tokenserver
 eval $(docker-machine env tokenserver)
 swarm_token=$(docker run swarm create)
 echo "-- swarm token is $swarm_token"
