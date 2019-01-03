@@ -1,0 +1,31 @@
+task hello {
+  doLast {
+    println 'Hello Gradle!'
+  }
+}
+
+task newtask(dependsOn: 'hello') << {
+  println 'Hello new Gradle'
+}
+
+task eachcount << {
+  5.times {
+    print "$it "
+  }
+}
+
+task eachone << {
+  String name = "ORACLE"
+  name.each() {
+    print "$it "
+  }
+}
+
+eachone.dependsOn eachcount
+
+hello.dependsOn{
+  tasks.findAll(){
+    task -> task.name.startsWith('each')
+  }
+}
+
