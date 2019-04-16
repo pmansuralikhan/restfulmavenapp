@@ -2,6 +2,7 @@ package com.mansur.thread;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class ProducerConsumerDemo {
 	private static List<Integer> sharedList = new ArrayList<Integer>();
@@ -45,7 +46,7 @@ class Producer implements Runnable {
 			// System.out.println("Producer produced: " + num);
 			sharedList.add(num);
 			System.out.println(sharedList);
-			Thread.sleep(100);
+			TimeUnit.MILLISECONDS.sleep(100);
 			sharedList.notify();
 		}
 	}
@@ -79,7 +80,7 @@ class Consumer implements Runnable {
 			int consumed = sharedList.remove(0);
 			// System.out.println("Consumer consumed: " + consumed);
 			System.out.println(sharedList);
-			Thread.sleep(100);
+			TimeUnit.MILLISECONDS.sleep(100);
 			sharedList.notify();
 
 		}
