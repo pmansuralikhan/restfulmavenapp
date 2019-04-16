@@ -8,20 +8,54 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
+import java.util.concurrent.TimeUnit;
 
 public class SampleTest {
 
 	public static void main(String[] args) throws Exception {
-		for (int i = 0; i < 20; i++) {
+		
+		getResilientConnection(true);
+
+		for (int i = 0; i < 20; /* i++ */) {
 			int index = (int) (Math.random() * 10) % 7 + 1;
 			// System.out.printf("%d ", index - 1);
+			String message = String.format("Issue occured, retry attempt #%d will be attempted : %s",
+					new Object[] { ++i, "Hello connection error" });
+			System.out.println(message);
 		}
 
-		List<String> problemList = getProblemPods("UppercasePods.txt");
-		List<String> affectedList = getWaveAffectedPods("UpgradeJan28.txt", problemList);
-		affectedList.sort((x, y) -> x.compareTo(y));
-		System.out.println(affectedList);
+		/*
+		 * 
+		 * List<String> problemList = getProblemPods("UppercasePods.txt"); List<String>
+		 * affectedList = getWaveAffectedPods("UpgradeJan28.txt", problemList);
+		 * affectedList.sort((x, y) -> x.compareTo(y));
+		 * System.out.println(affectedList);
+		 */
 
+	}
+
+	private static void getResilientConnection(boolean isThrow) {
+		// retry 3 times with a gap of 30 sec
+		for (int i = 0; i < 3;) {
+			try {
+				System.out.println("Get the connection...");
+				if(isThrow) {
+					throw new Exception("New JDBC connection error");
+				}
+				break;
+			} catch (Exception e) {
+				System.out.println(String.format("Issue occured, retry #%d will be attempted : %s",
+						new Object[] { ++i, "Hello Error" }));
+				try {
+					System.out.println("Sleeping for a bit");
+					TimeUnit.SECONDS.sleep(30);
+					System.out.println("Now awake to retry");
+				} catch (Exception innerException) {
+					System.out.println(String.format("Sleep issue: {0}", new Object[] { "Sleep Error" }));
+				}
+			}
+		}
+		System.out.println("By this time, the connection should have been gotten..");
 	}
 
 	public static List<String> getWaveAffectedPods(String wavePodFilename, List<String> problemPods) throws Exception {
