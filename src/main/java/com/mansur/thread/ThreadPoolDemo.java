@@ -2,7 +2,6 @@ package com.mansur.thread;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
 
 public class ThreadPoolDemo {
 
@@ -33,7 +32,7 @@ class MultiplicationTableGeneratorThread implements Runnable {
 
 	@Override
 	public void run() {
-		System.out.println(String.format("Table for %d", new Object[] { number }));
+		System.out.println(String.format("-- %d Table --", new Object[] { number }));
 		for (int i = 1; i <= 10; i++) {
 			System.out.println(String.format("%d x %d = %d", new Object[] { number, i, number * i }));
 		}
